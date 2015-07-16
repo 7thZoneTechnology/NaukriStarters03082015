@@ -45,7 +45,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Java Core <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a ng-model="value " ng-click="value = 9 "  >Java 9</a></li>
+            <li><a ng-model="value " ng-click="value = 9 "  ng-init="value=9" >Java 9</a></li>
             <li><a ng-model="value " ng-click="value = 8 " >Java 8</a></li>
             <li><a ng-model="value " ng-click="value = 7 "  >Java 7</a></li>
           </ul>
@@ -72,11 +72,12 @@
 </nav>
 <div class="container" ng-show="value==7 ||  value==8 || value==9" >
 <div ng-controller="Java7Controller as java7"  >
-<div ng-repeat="product in java7.products">
 <div class="panel panel-danger" ng-show="value==7">
- <div class="panel-heading">{{product.version}} {{value}} features
+ <div class="panel-heading">Java {{value}} features
 </div>
 </div>
+<div ng-repeat="product in java7.products">
+
  <div class="panel panel-success"  ng-show="value === 7">
       <div class="panel-heading">{{product.feature}}</div>
       <div class="panel-body" >{{product.description}}</div>
@@ -93,11 +94,11 @@
 </div>
 </div>
 <div ng-controller="Java8Controller as java8" >
+<div class="panel panel-danger" ng-show="value==8">
+ <div class="panel-heading">Java {{value}} features
+</div>
+</div>
 <div ng-repeat="product in java8.products">
-<div class="panel panel-danger" ng-show="value==8" >
- <div class="panel-heading">{{product.version}}  {{value}} features
-</div>
-</div>
  <div class="panel panel-success" ng-show="value === 8">
       <div class="panel-heading" >{{product.feature}}</div>
       <div class="panel-body" >{{product.description}}</div>
@@ -113,11 +114,11 @@
 </div>
 
 <div ng-controller="Java9Controller as java9" >
+<div class="panel panel-danger" ng-show="value==9">
+ <div class="panel-heading">Java {{value}} features
+</div>
+</div>
 <div ng-repeat="product in java9.products">
-<div class="panel panel-danger" ng-show="value==9" >
- <div class="panel-heading">{{product.version}}  {{value}} features
-</div>
-</div>
  <div class="panel panel-success" ng-show="value === 9">
       <div class="panel-heading" >{{product.feature}}</div>
       <div class="panel-body" >{{product.description}}</div>
@@ -141,7 +142,7 @@
       <img class="media-object" src="abc.jpeg" alt="...">
   </div>
        <div class="media-body">
-    <h4 class="media-heading">Tanuj Kathuria</h4>
+    <h4 class="media-heading">Tanuj Kathuria </h4>
    Founder of Mkyong.com and HostingCompass.com, love Java and open source stuff.
   Follow him on Twitter, or befriend him on Facebook or Google Plus.
   If you like my tutorials, consider make a donation to these charities.
