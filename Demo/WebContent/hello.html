@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html ng-app="store">
+<head>
+<link rel="stylesheet" type="text/css" href="bootstrap.min.css"/>
+<meta charset="ISO-8859-1">
+<title>Hello World</title>
+<style>
+.ng-invalid.ng-dirty {
+    border-color: red;
+}
+
+.ng-valid.ng-dirty {
+    border-color: green;
+}
+</style>
+
+
+</head>
+<body>
+<div ng-controller="StoreController as store">
+<div ng-repeat="product in store.products">
+
+
+
+<div class="panel" ng-show="tab===1"><h4>Description</h4>
+<p>{{product.description}}</p>
+</div>
+<div class="panel" ng-show="tab===2"><h4>Price</h4>
+<h2>${{product.price}}</h2>
+</div>
+
+<h3>Reviews: </h3><br>
+<blockquote ng-repeat="review in product.reviews">
+<b> {{review.stars}}</b>
+{{review.body}}
+<cite> by: {{review.author}}</cite>
+</blockquote>
+
+<div class="panel" ng-show="tab===3 && !product.reviewGiven"><h4>Review</h4>
+<h2>{{product.name}}</h2>
+<form name ="reviewForm"  ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+<select ng-model="reviewCtrl.review.stars" required>
+<option value="1 Star">1 Star</option>
+<option value="2 Star">2 Star</option>
+<option value="3 Star">3 Star</option>
+<option value="4 Star">4 Star</option>
+<option value="5 Star">5 Star</option>
+</select><br><br>
+<label>Review: </label><textarea ng-model="reviewCtrl.review.body" required></textarea><br><br>
+<label>by: </label>
+<input type="email" ng-model="reviewCtrl.review.author" placeholder="xyz@gmail.com" required><br><br>
+<div>review form is {{reviewForm.$valid}}</div>
+<input type="submit" value="submit"/>
+</form>
+</div>
+<div ng-show='product.reviewGiven'>thank you for giving your review</div>
+
+
+<button ng-show='product.canPurchase'>Add To Cart</button>
+<section ng-init="tab=1">
+<ul class="nav nav-pills">
+<li  ng-class="{active:tab===1}"  ><a href ng-click="tab=1">Description</a></li>
+<li ng-class="{active:tab===2}"><a href ng-click="tab=2">Price</a></li>
+<li ng-class="{active:tab===3}"><a href ng-click="tab=3">Review</a></li>
+</ul>
+</section>
+
+</div>
+</div>
+<script type="text/javascript" src="angular.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
