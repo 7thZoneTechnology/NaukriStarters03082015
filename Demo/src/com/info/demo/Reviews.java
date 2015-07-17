@@ -2,12 +2,6 @@ package com.info.demo;
 
 public class Reviews {
 	
-	public String getStars() {
-		return stars;
-	}
-	public void setStars(String stars) {
-		this.stars = stars;
-	}
 	public String getBody() {
 		return body;
 	}
@@ -20,9 +14,15 @@ public class Reviews {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	String stars;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	String body;
 	String author;
-	
+	String name;
 
 }

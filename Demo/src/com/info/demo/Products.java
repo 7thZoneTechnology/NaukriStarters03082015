@@ -36,5 +36,12 @@ String price="";
 String description="";
 boolean canPurchase=false;
 Track track;
+Reviews reviews;
+public Reviews getReviews() {
+	return reviews;
+}
+public void setReviews(Reviews reviews) {
+	this.reviews = reviews;
+}
 	
 }

@@ -22,6 +22,18 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+.ng-invalid.ng-dirty {
+    border-color: red;
+}
+
+.ng-valid.ng-dirty {
+    border-color: green;
+}
+</style>
+
+    
+    
   </head>
   <body>
    <nav class="navbar navbar-inverse">
@@ -150,32 +162,32 @@
   </div>
 </div>
  </div>
- Comments
- <div ng-controller="StoreController as store">
+<div ng-controller="StoreController as store">
 <div ng-repeat="product in store.products">
-<blockquote ng-repeat="review in product.reviews">
+  Comments <span class="badge">{{product.reviews.length}}</span>
+ <blockquote ng-repeat="review in product.reviews">
+
 <div class="media">
   <div class="media-left">
       <img class="media-object" src="images.jpg" alt="..." width="20 px" height="20 px">
   </div>
  <div class="media-body">
     <h4 class="media-heading"> {{review.author}} </h4>
-  <b> {{review.stars}}</b>
+  <b> {{review.name}}</b>
 {{review.body}}
 </blockquote>
-  </div>
-  </div>
-
-
+ 
  <form name ="reviewForm"  ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
 <div class="input-group">
-  <input type="text" class="form-control" placeholder="Join the Discussion " aria-describedby="basic-addon1"><br><br>
-<input type="email" class="form-control" placeholder="abc@xyz.com " aria-describedby="basic-addon1"><br><br>
+ 	<input type="text" class="form-control" placeholder="Join the Discussion " ng-model="reviewCtrl.review.body"aria-describedby="basic-addon1" required>
+  <input type="email" class="form-control" placeholder="abc@xyz.com " ng-model="reviewCtrl.review.author" aria-describedby="basic-addon1" required>
+  <input type="text" class="form-control" placeholder="Name" ng-model="reviewCtrl.review.name" aria-describedby="basic-addon1" required><br><br>
 </div>
 <input type="submit" value="submit"/>
 </form>
  </div>
-  </div>
+ </div>
+ </div>
 </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

@@ -29,30 +29,23 @@ public class Hello
 		public JSONArray getTrackInJSON() throws JSONException {
 			JSONObject obj3;
 			JSONObject jo = new JSONObject();
-			jo.put("name", "Mixer");
-			jo.put("price", "22.0");
-			jo.put("description", "Samsung");
-			JSONObject jo1 = new JSONObject();
-			jo1.put("name", "Refrigerator");
-			jo1.put("price", "28.0");
-			jo1.put("description", "LG");
-			
+			jo.put("name", "John");
+			jo.put("body", "good one");
+			jo.put("author", "John@gmail.com");
 			JSONArray list = new JSONArray();
 			JSONArray reviews = new JSONArray();
 			JSONObject review1 = new JSONObject();
-			review1.put("stars", "John");
+			review1.put("name", "John");
 			review1.put("body", "good one");
 			review1.put("author", "John@gmail.com");
 			JSONObject review2 = new JSONObject();
-			review2.put("stars", "honey");
+			review2.put("name", "honey");
 			review2.put("body", "good one");
 			review2.put("author", "honey@gmail.com");
 			reviews.put(review1);	
 			reviews.put(review2);	
 			jo.put("reviews", reviews);
-			jo1.put("reviews", reviews);
 			list .put(jo);
-			list .put(jo1);
 			return list;
 
 		}
@@ -130,7 +123,7 @@ public class Hello
 			//
 			// Code processing the input parameters
 			//	
-			return "JSON: The review is: " + reviews.getStars() + ", Reviews body : " + reviews.getBody() + ", Reviews Author: " + reviews.getAuthor();
+			return "JSON: The review is: " + reviews.getName() + ", Reviews body : " + reviews.getBody() + ", Reviews Author: " + reviews.getAuthor();
 		}
 		
 		
