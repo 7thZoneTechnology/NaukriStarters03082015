@@ -52,8 +52,23 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Interview<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">UI Development</a></li>
+       <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Interview <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ng-model="value " ng-click="value = 9 " >Collections</a></li>
+            <li><a ng-model="value " ng-click="value = 8 " >Multithreading</a></li>
+            <li><a ng-model="value " ng-click="value = 7 "  >Exception</a></li>
+          </ul>
+        </li>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Build Tools <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a ng-model="value " ng-click="value = 9 "  ng-init="value=9" >Ant</a></li>
+            <li><a ng-model="value " ng-click="value = 8 " >Maven</a></li>
+            <li><a ng-model="value " ng-click="value = 7 "  >Hudson</a></li>
+            <li><a ng-model="value " ng-click="value = 7 "  >JSON</a></li>
+          </ul>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Java Core <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -76,6 +91,9 @@
             <li><a href="#">Spring</a></li>
             <li><a href="#">Hibernate</a></li>
             <li><a href="#">Struts</a></li>
+            <li><a href="#">AngularJS</a></li>
+            <li><a href="#">NodeJS</a></li>
+            <li><a href="#">MongoDB</a></li>
           </ul>
         </li>
       </ul>
@@ -151,20 +169,21 @@
  <div class="panel-body" >
  <div class="media">
   <div class="media-left">
-      <img class="media-object" src="abc.jpeg" alt="...">
+      <img class="media-object" src="abc.jpg" alt="..." width="100 px" height="100 px">
   </div>
        <div class="media-body">
     <h4 class="media-heading">Tanuj Kathuria </h4>
-   Founder of Mkyong.com and HostingCompass.com, love Java and open source stuff.
+   Founder of Brand and tinutuorials.blogspot.com, love Java and open source stuff.
   Follow him on Twitter, or befriend him on Facebook or Google Plus.
-  If you like my tutorials, consider make a donation to these charities.
+  Designer,Developer,Architect and anything beyond imagination.Work for a social cause 
+  and money will be donated to some charitable organization.
   </div>
   </div>
 </div>
  </div>
 <div ng-controller="StoreController as store">
 <div ng-repeat="product in store.products">
-  Comments <span class="badge">{{product.reviews.length}}</span>
+  Post a Comment <span class="badge">{{product.reviews.length}}</span>
  <blockquote ng-repeat="review in product.reviews">
 
 <div class="media">
@@ -172,8 +191,7 @@
       <img class="media-object" src="images.jpg" alt="..." width="20 px" height="20 px">
   </div>
  <div class="media-body">
-    <h4 class="media-heading"> {{review.author}} </h4>
-  <b> {{review.name}}</b>
+    <h4 class="media-heading">  <b> {{review.name}}</b> </h4>
 {{review.body}}
 </blockquote>
  
@@ -183,7 +201,7 @@
   <input type="email" class="form-control" placeholder="abc@xyz.com " ng-model="reviewCtrl.review.author" aria-describedby="basic-addon1" required>
   <input type="text" class="form-control" placeholder="Name" ng-model="reviewCtrl.review.name" aria-describedby="basic-addon1" required><br><br>
 </div>
-<input type="submit" value="submit"/>
+ <input type="submit" class="btn btn-danger" value="Publish"/>
 </form>
  </div>
  </div>
