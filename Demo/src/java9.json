@@ -1,0 +1,26 @@
+[{
+		"feature":"Replacing Jars with Modules",
+		"description":"After this point, The Java runtime system will no longer be contained in jar files, and instead will be composed of modules. Files such as rt.jar and tools.jar will be a thing of the past. The new system will consist solely of modules, although the platform will continue to accept and run applications and libraries packaged as jar files. The intention is that over time, application developers wil migrate to the new modular formats as well."
+},
+{
+		"feature":"light-weight JSON API ",
+		"description":"Provide a light-weight API for consuming and generating JSON documents and data streams."
+},
+{
+		"feature":"HTTP 2.0 client and websockets",
+		"description":"Define a new HTTP client API that implements HTTP 2 and WebSocket"
+},
+{
+		"feature":"Improved contended locking ",
+		"description":"—for increasing performance between threads.Improve the performance of contended Java object monitors."
+},
+{
+		"feature":"Segmented Code Cache ",
+		"description":"Divide the code cache into distinct segments, each of which contains compiled code of a particular type, in order to improve performance and enable future extensions."
+},
+{
+		"feature":"Smart Java Compilation  ",
+		"description":"Improve the sjavac tool so that it can be used by default in the JDK build, and generalize it so that it can be used to build large projects other than the JDK."
+}
+
+]

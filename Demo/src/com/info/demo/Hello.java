@@ -1,27 +1,21 @@
 package com.info.demo;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Enumeration;
-import java.util.Properties;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.MatrixParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.ResponseBuilder;
-import javax.ws.rs.core.UriInfo;
 
+import org.codehaus.jackson.JsonFactory;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.JsonParser;
+import org.codehaus.jackson.JsonToken;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -60,57 +54,15 @@ public class Hello
 	@Path("/java8")	
 	@Produces(MediaType.APPLICATION_JSON)
 	public JSONArray getJava8() throws JSONException {
-		JSONArray list = new JSONArray();
-		Properties prop = new Properties();
-		String propFileName = "config.properties";
-		InputStream inputStream;
-		try {
-
-			inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
-
-			if (inputStream != null) {
-				prop.load(inputStream);
-			} else 
-			{
-				throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
-			}
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		} 
-		Enumeration<?> e = prop.propertyNames();
-		while (e.hasMoreElements()) {
-			JSONObject jo = new JSONObject();
-			String key = (String) e.nextElement();
-			String value = prop.getProperty(key);
-			System.out.println("Key : " + key + ", Value : " + value);
-			jo.put("feature", key);
-			jo.put("description", value);
-			list .put(jo);
-			}
-
-		return list;
-
-
+		return getJSONArray("\\java8.json");
 	}
+
 
 	@GET
 	@Path("/java7")	
 	@Produces(MediaType.APPLICATION_JSON)
 	public JSONArray getJava7() throws JSONException {
-		JSONObject jo = new JSONObject();
-		jo.put("version", "java");
-		jo.put("feature", "Lambda Expressions");
-		jo.put("description", "a new language feature, has been introduced in this release. They enable you to treat functionality as a method argument, or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly");
-		jo.put("code", "class abc{}");
-		JSONObject jo1 = new JSONObject();
-		jo1.put("version", "java");
-		jo1.put("feature", "28.0");
-		jo1.put("description", "LG");
-		JSONArray list = new JSONArray();
-		list .put(jo);
-		list .put(jo1);
-		return list;
-
+		return getJSONArray("\\java7.json");
 	}
 
 
@@ -118,19 +70,7 @@ public class Hello
 	@Path("/java9")	
 	@Produces(MediaType.APPLICATION_JSON)
 	public JSONArray getJava9() throws JSONException {
-		JSONObject jo = new JSONObject();
-		jo.put("version", "java");
-		jo.put("feature", "good Expressions");
-		jo.put("description", "a new language feature, has been introduced in this release. They enable you to treat functionality as a method argument, or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly");
-		JSONObject jo1 = new JSONObject();
-		jo1.put("version", "honey singh");
-		jo1.put("feature", "28.0");
-		jo1.put("description", "LG");
-		JSONArray list = new JSONArray();
-		list .put(jo);
-		list .put(jo1);
-		return list;
-
+		return getJSONArray("\\java9.json");
 	}
 
 
@@ -147,7 +87,59 @@ public class Hello
 	}
 
 
+	public JSONArray getJSONArray(String fileName) throws JSONException{
 
+		JSONArray list = new JSONArray();
+		try {
+
+			JsonFactory jfactory = new JsonFactory();
+
+			/*** read from file ***/
+			JsonParser jParser = jfactory.createJsonParser(new File(fileName));
+
+			while (jParser.nextToken() != JsonToken.END_ARRAY) 
+			{	 
+
+				// loop until token equal to "}"
+
+				while (jParser.nextToken() != JsonToken.END_OBJECT) {
+
+					String fieldname = jParser.getCurrentName();
+					if ("feature".equals(fieldname)) {
+						JSONObject jo = new JSONObject();
+						// current token is "name",
+						// move to next, which is "name"'s value
+						jParser.nextToken();
+						jo.put("feature", jParser.getText());
+						jParser.nextToken();
+						jParser.nextToken();
+						jo.put("description", jParser.getText());
+						list.put(jo);
+
+					}
+
+				}
+
+			}
+			jParser.close();
+
+
+		} catch (JsonGenerationException e) {
+
+			e.printStackTrace();
+
+		} catch (JsonMappingException e) {
+
+			e.printStackTrace();
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		}
+		return list;
+
+	}
 
 
 

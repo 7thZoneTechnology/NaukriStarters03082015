@@ -1,0 +1,41 @@
+[{
+		"feature":"Lambda Expressions:",
+		"description":" They enable you to treat functionality as a method argument, or code as data. Lambda expressions let you express instances of single-method interfaces (referred to as functional interfaces) more compactly."
+},
+{
+		"feature":"Default methods ",
+		"description":"They enable new functionality to be added to the interfaces of libraries and ensure binary compatibility with code written for older versions of those interfaces"
+},
+{
+		"feature":"Repeating Annotations ",
+		"description":"They provide the ability to apply the same annotation type more than once to the same declaration or type use."
+},
+{
+		"feature":"Type Annotations",
+		"description":"They provide the ability to apply an annotation anywhere a type is used, not just on a declaration. Used with a pluggable type system, this feature enables improved type checking of your code"
+},
+{
+		"feature":"Collections-Performance Improvement for HashMaps with Key Collisions ",
+		"description":"Classes in the new java.util.stream package provide a Stream API to support functional-style operations on streams of elements. The Stream API is integrated into the Collections API, which enables bulk operations on collections, such as sequential or parallel map-reduce transformations."
+},
+{
+		"feature":"Compact Profiles ",
+		"description":"contain predefined subsets of the Java SE platform and enable applications that do not require the entire Platform to be deployed and run on small devices."
+},
+{
+		"feature":"Security ",
+		"description":"1 Client side TLS  enabled by default"
+},
+{
+		"feature":"Date-Time Package",
+		"description":"a new set of packages that provide a comprehensive date-time model."
+},
+{
+		"feature":"Scripting",
+		"description":"Nashorn Javascript Engine"
+},
+{
+		"feature":"HotSpot ",
+		"description":"Hardware intrinsics were added to use Advanced Encryption Standard (AES). The UseAES and UseAESIntrinsics flags are available to enable the hardware-based AES intrinsics for Intel hardware. The hardware must be 2010 or newer Westmere hardware. For example, to enable hardware AES, use the following flags:"
+}
+]
