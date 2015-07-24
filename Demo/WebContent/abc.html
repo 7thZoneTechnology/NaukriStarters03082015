@@ -200,9 +200,20 @@
  
  <form name ="reviewForm"  ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
 <div class="input-group">
- 	<input type="text" class="form-control" placeholder="Join the Discussion " ng-model="reviewCtrl.review.body"aria-describedby="basic-addon1" required>
-  <input type="email" class="form-control" placeholder="abc@xyz.com " ng-model="reviewCtrl.review.author" aria-describedby="basic-addon1" required>
-  <input type="text" class="form-control" placeholder="Name" ng-model="reviewCtrl.review.name" aria-describedby="basic-addon1" required><br><br>
+ 	<input type="text" class="form-control" name="user" placeholder="Join the Discussion " ng-model="reviewCtrl.review.body"aria-describedby="basic-addon1" required>
+   <span style="color:red" ng-show="reviewForm.user.$dirty && reviewForm.user.$invalid">
+  <span ng-show="reviewForm.user.$error.required">Message is required.</span><br>
+  </span>
+  
+  <input type="email" class="form-control" name="email" placeholder="abc@xyz.com " ng-model="reviewCtrl.review.author" aria-describedby="basic-addon1" required>
+   <span style="color:red" ng-show="reviewForm.email.$dirty && reviewForm.email.$invalid"><br>
+  <span ng-show="reviewForm.email.$error.required">Email is required.</span>
+  <span ng-show="reviewForm.email.$error.email">Invalid email address.</span>
+  </span>
+  <input type="text" class="form-control" name="Name" placeholder="Name" ng-model="reviewCtrl.review.name" aria-describedby="basic-addon1" required><br><br>
+ <span style="color:red" ng-show="reviewForm.Name.$dirty && reviewForm.Name.$invalid">
+  <span ng-show="reviewForm.Name.$error.required">Name is required.</span>
+  </span>
 </div>
  <input type="submit" class="btn btn-danger" value="Publish"/>
 </form>
