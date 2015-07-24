@@ -85,24 +85,49 @@
                         templateUrl: 'templates/collections.html',
                         controller: 'CollectionsController'
                       }).
+                      when('/exception', {
+                          templateUrl: 'templates/exception.html',
+                          controller: 'ExceptionController'
+                        }).
                       when('/multithreading', {
                         templateUrl: 'templates/multithreading.html',
-                        controller: 'ShowOrdersController'
+                        controller: 'MultithreadingController'
                       });
                     
                   }]);
 
-      app1.controller('CollectionsController', function($scope) {
+      app1.controller('CollectionsController', function($scope,$http) 
+   {
 	   	  
-     	 var java=this;
-     	 
      	 $http.get("http://localhost:8083/Demo/rest/hello/interviewCollections")
   	    .success(function(response) {
-  	    	java.products=response;
-  	    	console.log(java.products);
+  	    	$scope.products=response;
+  	    	console.log($scope.products);
   		});
      	 
  	});
+      
+      app1.controller('MultithreadingController', function($scope,$http) 
+    		   {
+    			   	  
+    		     	 $http.get("http://localhost:8083/Demo/rest/hello/interviewmultithreading")
+    		  	    .success(function(response) {
+    		  	    	$scope.products=response;
+    		  	    	console.log($scope.products);
+    		  		});
+    		     	 
+    		 	});
+      
+      app1.controller('ExceptionController', function($scope,$http) 
+    		   {
+    			   	  
+    		     	 $http.get("http://localhost:8083/Demo/rest/hello/interviewException")
+    		  	    .success(function(response) {
+    		  	    	$scope.products=response;
+    		  	    	console.log($scope.products);
+    		  		});
+    		     	 
+    		 	});
 
 
       app1.controller('ShowOrdersController', function($scope) {

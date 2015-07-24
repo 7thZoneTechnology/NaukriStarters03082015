@@ -55,6 +55,18 @@ public class Hello
 	public JSONArray getinterviewCollections() throws JSONException {
 		return getJSONArray("\\interviewCollections.json");
 	}
+	@GET
+	@Path("/interviewmultithreading")	
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONArray getinterviewMultithreading() throws JSONException {
+		return getJSONArray("\\interviewMultithreading.json");
+	}
+	@GET
+	@Path("/interviewException")	
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONArray getinterviewException() throws JSONException {
+		return getJSONArray("\\interviewException.json");
+	}
 
 	
 	@GET
