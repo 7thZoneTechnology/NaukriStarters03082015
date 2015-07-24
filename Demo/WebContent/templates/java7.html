@@ -20,3 +20,56 @@
 
 </div>
 </div>
+<div class="panel panel-warning"> 
+ <div class="panel-heading" >About the Author</div>
+ <div class="panel-body" >
+ <div class="media">
+  <div class="media-left">
+      <img class="media-object" src="abc.jpg" alt="..." width="100 px" height="100 px">
+  </div>
+       <div class="media-body">
+    <h4 class="media-heading">Tanuj Kathuria </h4>
+   Founder of Brand and tinutuorials.blogspot.com, love Java and open source stuff.
+  Follow him on Twitter, or befriend him on Facebook or Google Plus.
+  Designer,Developer,Architect and anything beyond imagination.Work for a social cause 
+  and money will be donated to some charitable organization.
+  </div>
+  </div>
+</div>
+ </div>
+<div ng-controller="StoreController as store">
+<div ng-repeat="product in store.products">
+  Post a Comment <span class="badge">{{product.reviews.length}}</span>
+ <blockquote ng-repeat="review in product.reviews">
+
+<div class="media">
+  <div class="media-left">
+      <img class="media-object" src="images.jpg" alt="..." width="20 px" height="20 px">
+  </div>
+ <div class="media-body">
+    <h4 class="media-heading">  <b> {{review.name}}</b> </h4>
+{{review.body}}
+</blockquote>
+ 
+ <form name ="reviewForm"  ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+<div class="input-group">
+ 	<input type="text" class="form-control" name="user" placeholder="Join the Discussion " ng-model="reviewCtrl.review.body"aria-describedby="basic-addon1" required>
+   <span style="color:red" ng-show="reviewForm.user.$dirty && reviewForm.user.$invalid">
+  <span ng-show="reviewForm.user.$error.required">Message is required.</span><br>
+  </span>
+  
+  <input type="email" class="form-control" name="email" placeholder="abc@xyz.com " ng-model="reviewCtrl.review.author" aria-describedby="basic-addon1" required>
+   <span style="color:red" ng-show="reviewForm.email.$dirty && reviewForm.email.$invalid"><br>
+  <span ng-show="reviewForm.email.$error.required">Email is required.</span>
+  <span ng-show="reviewForm.email.$error.email">Invalid email address.</span>
+  </span>
+  <input type="text" class="form-control" name="Name" placeholder="Name" ng-model="reviewCtrl.review.name" aria-describedby="basic-addon1" required><br><br>
+ <span style="color:red" ng-show="reviewForm.Name.$dirty && reviewForm.Name.$invalid">
+  <span ng-show="reviewForm.Name.$error.required">Name is required.</span>
+  </span>
+</div>
+ <input type="submit" class="btn btn-danger" value="Publish"/>
+</form>
+ </div>
+ </div>
+ </div>

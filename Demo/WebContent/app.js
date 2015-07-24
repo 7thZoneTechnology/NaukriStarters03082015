@@ -31,41 +31,6 @@
 	
 
 	
-	 app.controller('Java8Controller', function($scope, $http) {
-	   	  
-    	 var java=this;
-    	 $http.get("http://localhost:8083/Demo/rest/hello/java8")
- 	    .success(function(response) {
- 	    	java.products=response;
- 	    	console.log(java.products);
- 		});
-    	 
-	});
-	 
-	 app.controller('Java7Controller', function($scope, $http) {
-	   	  
-    	 var java=this;
-    	 
-    	 $http.get("http://localhost:8083/Demo/rest/hello/java7")
-	    .success(function(response) {
-	    	java.products=response;
-	    	console.log(java.products);
-		});
-    	 
-	});
-	
-	 app.controller('Java9Controller', function($scope, $http) {
-	   	  
-    	 var java=this;
-    	 
-    	 $http.get("http://localhost:8083/Demo/rest/hello/java9")
- 	    .success(function(response) {
- 	    	java.products=response;
- 	    	console.log(java.products);
- 		});
-    	 
-	});
-	
       app.controller('StoreController', function($scope, $http) {
     	  
     	 var store=this;
@@ -92,7 +57,27 @@
                       when('/multithreading', {
                         templateUrl: 'templates/multithreading.html',
                         controller: 'MultithreadingController'
-                      });
+                      }).
+                      when('/firstpage', {
+                        templateUrl: 'templates/firstpage.html',
+                        controller: 'ShowOrdersController'
+                      }).
+                      when('/java9', {
+                        templateUrl: 'templates/java9.html',
+                        controller: 'Java9Controller'
+                      }).
+                      when('/java8', {
+                        templateUrl: 'templates/java8.html',
+                        controller: 'Java8Controller'
+                      }).
+                      when('/java7', {
+                        templateUrl: 'templates/java7.html',
+                        controller: 'Java7Controller'
+                      }).
+                      otherwise({
+                          redirectTo: '/firstpage'
+                        });
+
                     
                   }]);
 
@@ -135,6 +120,38 @@
       $scope.message = 'This is Show orders screen';
 
       });
+      
+      app1.controller('Java8Controller', function($scope, $http) {
+	   	  
+     	 $http.get("http://localhost:8083/Demo/rest/hello/java8")
+  	    .success(function(response) {
+  	    	$scope.products=response;
+  	    	console.log($scope.products);
+  		});
+     	 
+ 	});
+ 	 
+ 	 app1.controller('Java7Controller', function($scope, $http) {
+ 	   	  
+     	 
+     	 $http.get("http://localhost:8083/Demo/rest/hello/java7")
+ 	    .success(function(response) {
+ 	    	$scope.products=response;
+ 	    	console.log($scope.products);
+ 		});
+     	 
+ 	});
+ 	
+ 	 app1.controller('Java9Controller', function($scope, $http) {
+ 	   	  
+     	 
+     	 $http.get("http://localhost:8083/Demo/rest/hello/java9")
+  	    .success(function(response) {
+  	    	$scope.products=response;
+  	    	console.log($scope.products);
+  		});
+     	 
+ 	});
 
 				
 })();
