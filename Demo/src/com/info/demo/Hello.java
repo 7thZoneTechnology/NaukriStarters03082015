@@ -49,7 +49,14 @@ public class Hello
 
 	}
 
+	@GET
+	@Path("/interviewCollections")	
+	@Produces(MediaType.APPLICATION_JSON)
+	public JSONArray getinterviewCollections() throws JSONException {
+		return getJSONArray("\\interviewCollections.json");
+	}
 
+	
 	@GET
 	@Path("/java8")	
 	@Produces(MediaType.APPLICATION_JSON)
@@ -114,6 +121,9 @@ public class Hello
 						jParser.nextToken();
 						jParser.nextToken();
 						jo.put("description", jParser.getText());
+						jParser.nextToken();
+						jParser.nextToken();
+						jo.put("code", jParser.getText());
 						list.put(jo);
 
 					}

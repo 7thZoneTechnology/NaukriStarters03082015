@@ -83,7 +83,7 @@
                     $routeProvider.
                       when('/collections', {
                         templateUrl: 'templates/collections.html',
-                        controller: 'AddOrderController'
+                        controller: 'CollectionsController'
                       }).
                       when('/multithreading', {
                         templateUrl: 'templates/multithreading.html',
@@ -92,11 +92,17 @@
                     
                   }]);
 
-      app1.controller('AddOrderController', function($scope) {
-
-      $scope.message = 'This is Add new order screen';
-
-      });
+      app1.controller('CollectionsController', function($scope) {
+	   	  
+     	 var java=this;
+     	 
+     	 $http.get("http://localhost:8083/Demo/rest/hello/interviewCollections")
+  	    .success(function(response) {
+  	    	java.products=response;
+  	    	console.log(java.products);
+  		});
+     	 
+ 	});
 
 
       app1.controller('ShowOrdersController', function($scope) {

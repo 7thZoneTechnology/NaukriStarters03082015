@@ -43,5 +43,13 @@ public Reviews getReviews() {
 public void setReviews(Reviews reviews) {
 	this.reviews = reviews;
 }
+String code="";
+public String getCode() {
+	return code;
+}
+public void setCode(String code) {
+	this.code = code;
+}
+
 	
 }

@@ -1,0 +1,14 @@
+[{
+		"feature":"What are Collection related features in Java 8?",
+		"description":"Java 8 has brought major changes in the Collection API. Some of the changes are:
+
+Java Stream API for collection classes for supporting sequential as well as parallel processing
+Iterable interface is extended with forEach() default method that we can use to iterate over a collection. It is very helpful when used with lambda expressions because it’s argument Consumer is a function interface.
+Miscellaneous Collection API improvements such as forEachRemaining(Consumer action) method in Iterator interface, Map replaceAll(), compute(), merge() methods.
+		"
+},
+{
+		"feature":"sql",
+		"description":"this is a very nice feature"
+}
+]
