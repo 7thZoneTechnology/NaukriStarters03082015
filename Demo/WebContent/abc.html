@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="store"  >
   <head>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +28,6 @@
 .ng-invalid.ng-dirty {
     border-color: red;
 }
-
 .ng-valid.ng-dirty {
     border-color: green;
 }
@@ -55,15 +56,15 @@
        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Interview <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a ng-model="value " ng-click="value = 9 " >Collections</a></li>
-            <li><a ng-model="value " ng-click="value = 8 " >Multithreading</a></li>
-            <li><a ng-model="value " ng-click="value = 7 "  >Exception</a></li>
+           <li><a href="#/collections" ng-click="value = 0 " > Collections </a></li>
+                <li><a href="#/multithreading" ng-click="value = 0 " > Multithreading </a></li>
+                  <li><a href="#/exception" ng-click="value = 0 " > Exception </a></li>
           </ul>
         </li>
          <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Build Tools <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a ng-model="value " ng-click="value = 9 "  ng-init="value=9" >Ant</a></li>
+            <li><a ng-model="value " ng-click="value = 9 " >Ant</a></li>
             <li><a ng-model="value " ng-click="value = 8 " >Maven</a></li>
             <li><a ng-model="value " ng-click="value = 7 "  >Hudson</a></li>
             <li><a ng-model="value " ng-click="value = 7 "  >JSON</a></li>
@@ -72,7 +73,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Java Core <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a ng-model="value " ng-click="value = 9 "  ng-init="value=9" >Java 9</a></li>
+            <li><a ng-model="value " ng-click="value = 9 "   >Java 9</a></li>
             <li><a ng-model="value " ng-click="value = 8 " >Java 8</a></li>
             <li><a ng-model="value " ng-click="value = 7 "  >Java 7</a></li>
           </ul>
@@ -100,7 +101,9 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<div ng-view></div>
 <div class="container" ng-show="value==7 ||  value==8 || value==9" >
+
 <div ng-controller="Java7Controller as java7"  >
 <div class="panel panel-danger" ng-show="value==7">
  <div class="panel-heading">Java {{value}} features
@@ -207,12 +210,14 @@
  </div>
  </div>
 </div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script type="text/javascript" src="angular.min.js"></script>
-<script type="text/javascript" src="app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
   </body>
 </html>

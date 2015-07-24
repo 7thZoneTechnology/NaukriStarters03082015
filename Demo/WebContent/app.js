@@ -1,5 +1,5 @@
 (function(){
-	var app=angular.module('store',[]);
+	var app=angular.module('store',['app1']);
 	
 	app.controller('ReviewController',function($scope,$http){
 	this.review={};
@@ -76,10 +76,34 @@
 		});
     	 
 	});
-			
-     
-		
+      
+      var app1 = angular.module("app1", ['ngRoute'])
+      app1.config(['$routeProvider',
+                  function($routeProvider) {
+                    $routeProvider.
+                      when('/collections', {
+                        templateUrl: 'templates/collections.html',
+                        controller: 'AddOrderController'
+                      }).
+                      when('/multithreading', {
+                        templateUrl: 'templates/multithreading.html',
+                        controller: 'ShowOrdersController'
+                      });
+                    
+                  }]);
 
-	
+      app1.controller('AddOrderController', function($scope) {
+
+      $scope.message = 'This is Add new order screen';
+
+      });
+
+
+      app1.controller('ShowOrdersController', function($scope) {
+
+      $scope.message = 'This is Show orders screen';
+
+      });
+
+				
 })();
-
