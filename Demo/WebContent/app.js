@@ -7,6 +7,7 @@
 		
 		// Writing it to the server
 		//		
+		this.review.date = new Date();
 		console.log(product);
 		product.reviews.push(this.review);
 		this.review={};

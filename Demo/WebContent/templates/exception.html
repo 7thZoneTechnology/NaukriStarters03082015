@@ -45,8 +45,8 @@
       <img class="media-object" src="images.jpg" alt="..." width="20 px" height="20 px">
   </div>
  <div class="media-body">
-    <h4 class="media-heading">  <b> {{review.name}}</b> </h4>
-{{review.body}}
+      <h4 class="media-heading">  <b> {{review.name}}</b> </h4><small>{{review.date}}</small>
+{{review.body}} 
 </blockquote>
  
  <form name ="reviewForm"  ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>

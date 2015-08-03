@@ -37,10 +37,12 @@ public class Hello
 		review1.put("name", "John");
 		review1.put("body", "good\n one");
 		review1.put("author", "John@gmail.com");
+		review1.put("date", "10/11/2013");
 		JSONObject review2 = new JSONObject();
 		review2.put("name", "honey");
 		review2.put("body", "good\n one");
 		review2.put("author", "honey@gmail.com");
+		review2.put("date", "10/12/2013");
 		reviews.put(review1);	
 		reviews.put(review2);	
 		jo.put("reviews", reviews);
