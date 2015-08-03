@@ -40,13 +40,19 @@
 	    	console.log(store.products);
 		});
     	 
+    	 app.filter('newlines', function () {
+    		    return function(text) {
+    		        return text.replace(/\n/g, '<br/>');
+    		    }
+    		});
+    	 
 	});
       
       var app1 = angular.module("app1", ['ngRoute'])
       app1.config(['$routeProvider',
                   function($routeProvider) {
                     $routeProvider.
-                      when('/collections', {
+                      when('/hibernate', {
                         templateUrl: 'templates/collections.html',
                         controller: 'CollectionsController'
                       }).
@@ -89,6 +95,9 @@
   	    	$scope.products=response;
   	    	console.log($scope.products);
   		});
+     	 $scope.toggle = function() {
+             $scope.myVar = !$scope.myVar;
+         };
      	 
  	});
       
@@ -100,6 +109,9 @@
     		  	    	$scope.products=response;
     		  	    	console.log($scope.products);
     		  		});
+    		     	 $scope.toggle = function() {
+    		             $scope.myVar = !$scope.myVar;
+    		         };
     		     	 
     		 	});
       
@@ -111,6 +123,9 @@
     		  	    	$scope.products=response;
     		  	    	console.log($scope.products);
     		  		});
+    		     	 $scope.toggle = function() {
+    		             $scope.myVar = !$scope.myVar;
+    		         };
     		     	 
     		 	});
 
@@ -128,6 +143,9 @@
   	    	$scope.products=response;
   	    	console.log($scope.products);
   		});
+     	 $scope.toggle = function() {
+             $scope.myVar = !$scope.myVar;
+         };
      	 
  	});
  	 
@@ -139,6 +157,9 @@
  	    	$scope.products=response;
  	    	console.log($scope.products);
  		});
+     	 $scope.toggle = function() {
+             $scope.myVar = !$scope.myVar;
+         };
      	 
  	});
  	
@@ -150,7 +171,9 @@
   	    	$scope.products=response;
   	    	console.log($scope.products);
   		});
-     	 
+     	 $scope.toggle = function() {
+             $scope.myVar = !$scope.myVar;
+         };
  	});
 
 				

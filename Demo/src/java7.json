@@ -1,6 +1,6 @@
 [{
 		"feature":"lambda",
-		"description":"this is a very good feature"
+		"description":"this\\n is a very good feature"
 },
 {
 		"feature":"sql",
